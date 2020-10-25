@@ -4,7 +4,7 @@ import codecs
 import time, datetime
 import socket
 from collections import defaultdict
-from finapi.common.logie.colored import colored
+from .colored import colored
 
 """
 注意：
@@ -25,8 +25,9 @@ CRITICAL    = 5
 
 
 class Handler(object):
+
     time_formatter = "%Y-%m-%d %H:%M:%S.%f"
-    # def __init__(self, tag):
+
     def __init__(self, tag, level=DEBUG):
         # level: added
         self.tag = tag.upper()
@@ -57,6 +58,7 @@ class Handler(object):
 
 
 class StreamHandler(Handler):
+
     def __init__(self, *args, **kwargs):
         Handler.__init__(self, *args, **kwargs)
 
@@ -75,6 +77,7 @@ class StreamHandler(Handler):
 
 
 class ColoredStreamHandler(Handler):
+
     def __init__(self, tag_color=None, body_color=None, style='', *args, **kwargs):
         Handler.__init__(self, *args, **kwargs)
         default_tag_color = dict(back='yellow', fore='', style='')

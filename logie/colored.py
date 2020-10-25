@@ -1,4 +1,3 @@
-#/usr/bin/python
 #-*- coding: utf-8 -*-
 #   格式：\033[显示方式;前景色;背景色m
 #   说明:
@@ -27,6 +26,16 @@
 #   \033[1;31;40m    <!--1-高亮显示 31-前景色红色  40-背景色黑色-->
 #   \033[0m          <!--采用终端默认设置，即取消颜色设置-->]]]
 # ref: http://www.w2bc.com/Article/39141
+import platform
+
+
+_system = platform.system()
+if _system.startswith('Darwin'):
+    _unix_like = True
+elif _system.startswith('Linux'):
+    _unix_like = True
+else:
+    _unix_like = False
 
 
 STYLE = {
@@ -72,6 +81,8 @@ STYLE = {
 
 
 def colored(string, style = '', fore = '', back = ''):
+    if not _unix_like:
+        return string
     style  = '%s' % STYLE['style'][style] if style in STYLE['style'] else ''
     fore  = '%s' % STYLE['fore'][fore] if fore in STYLE['fore'] else ''
     back  = '%s' % STYLE['back'][back] if back in STYLE['back'] else ''
@@ -112,7 +123,7 @@ def TestColor():
     print(colored('蓝色',   back = 'blue'))
     print(colored('紫红色', back = 'purple'))
     print(colored('青蓝色', back = 'cyan'))
-    print(colored('白色',   back = 'white'))
+    print(colored('白色',   back = 'white', fore='blue', style='underline'))
 
 
 if __name__ == '__main__':

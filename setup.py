@@ -5,7 +5,7 @@ setup(
     name='logie', 
     version='0.1.0', 
     packages=find_packages(),
-    description='simple small logger for python',
+    description='simple logger for python',
     install_requires = [],
     scripts=[],
     python_requires = '>=3',
