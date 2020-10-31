@@ -1,3 +1,7 @@
+
+# 注
+直接使用logging模块即可
+
 # logie
 simple logger for python
 
@@ -18,4 +22,16 @@ logger.debug('debug msg')
 logger.info('info msg %d', 3)
 logger.warning('warning msg')
 logger.error('error msg')
+```
+
+# TODOs
+	future
+```python
+logging.basicConfig(
+		level=logging.DEBUG,
+	   	format='%(asctime)s %(name)-12s %(levelname)-8s %(message)s',
+	   	datefmt='%m-%d %H:%M',
+	   	filename='/temp/myapp.log.%(created.year)s-%(created.month)s-%(created.day)s',
+	   	filemode='w')
+
 ```
